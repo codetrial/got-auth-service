@@ -1,0 +1,7 @@
+type User implements Datable {
+  id: ID!
+  email: String!
+  name: String!
+  create_time: Date!
+  update_time: Date
+}

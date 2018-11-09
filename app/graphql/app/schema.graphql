@@ -1,0 +1,9 @@
+type App implements Datable {
+  id: ID!
+  code: String!
+  name: String!
+  create_time: Date!
+  update_time: Date
+
+  roles: [Role]!
+}

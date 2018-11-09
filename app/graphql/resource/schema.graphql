@@ -1,0 +1,9 @@
+type Resource implements Datable {
+  id: ID!
+  app_id: Int!
+  code: String!
+  resource_type_id: Int!
+  detail: String!
+  create_time: Date!
+  update_time: Date
+}

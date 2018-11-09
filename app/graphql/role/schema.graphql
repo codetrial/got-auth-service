@@ -1,0 +1,8 @@
+type Role implements Datable {
+  id: ID!
+  app_id: Int!
+  code: String!
+  name: String!
+  create_time: Date!
+  update_time: Date
+}

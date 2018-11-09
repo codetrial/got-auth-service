@@ -1,0 +1,16 @@
+type Query {
+  app(id: ID!): App
+  apps: [App]!
+
+  group(id: ID!): Group
+  groups(appId: Int): [Group]!
+
+  role(id: ID!): Role
+  roles(appId: Int, groupId: Int): [Role]!
+
+  resource(id: ID!): Resource
+  resources(appId: Int, roleId: Int): [Resource]!
+
+  user(id: ID!): User
+  users: [User]!
+}

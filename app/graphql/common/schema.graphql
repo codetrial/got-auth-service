@@ -1,0 +1,6 @@
+scalar Date
+
+interface Datable {
+  create_time: Date!
+  update_time: Date
+}
