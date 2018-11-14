@@ -32,8 +32,8 @@ module.exports = app => {
   router.put('/api/role/:id', controller.role.update);
   router.delete('/api/role/:id', controller.role.destroy);
   router.get('/api/role/:id/resource', app.middlewares.search(), controller.role.getResource);
-  router.post('/api/group/:id/resource', controller.group.addResource);
-  router.delete('/api/group/:id/resource', controller.group.removeResource);
+  router.post('/api/role/:id/resource', controller.role.addResource);
+  router.delete('/api/role/:id/resource', controller.role.removeResource);
 
   router.get('/api/resource', app.middlewares.search(), controller.resource.index);
   router.post('/api/resource', controller.resource.create);

@@ -4,4 +4,8 @@ type User implements Datable {
   name: String!
   create_time: Date!
   update_time: Date
+
+  groups: [Group]!
+  roles: [Role]!
+  resources: [Resource]!
 }

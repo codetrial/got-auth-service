@@ -5,11 +5,8 @@ module.exports = {
     resource(root, { id }, ctx) {
       return ctx.connector.resource.getById(id);
     },
-    resources(root, { appId }, ctx) {
-      if (appId) {
-        return ctx.connector.resource.getByAppId(appId);
-      }
-      return ctx.connector.resource.getAll();
+    resources(root, { param }, ctx) {
+      return ctx.connector.resource.getAll(param);
     },
   },
 };

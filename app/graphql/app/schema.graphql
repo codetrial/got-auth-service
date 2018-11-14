@@ -5,5 +5,12 @@ type App implements Datable {
   create_time: Date!
   update_time: Date
 
+  groups: [Group]!
   roles: [Role]!
+  resources: [Resource]!
+}
+
+input AppEntity {
+  code: String!
+  name: String!
 }

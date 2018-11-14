@@ -4,3 +4,13 @@ interface Datable {
   create_time: Date!
   update_time: Date
 }
+
+input SearchParam {
+  page: String
+  filter: String
+}
+
+type MutationResponse {
+  status: Int
+  message: String
+}

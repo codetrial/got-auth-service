@@ -1,10 +1,11 @@
 'use strict';
 
 const DataLoader = require('dataloader');
+const BaseConnector = require('../base/connector');
 
-class RoleConnector {
+class RoleConnector extends BaseConnector {
   constructor(ctx) {
-    this.ctx = ctx;
+    super(ctx);
     this.loaders = {
       roleIdLoader: new DataLoader(this.getByIds.bind(this)),
     };
@@ -18,12 +19,9 @@ class RoleConnector {
     return this.loaders.roleIdLoader.load(id);
   }
 
-  getAll() {
-    return this.ctx.app.model.Role.findAll();
-  }
-
-  getByAppId(appId) {
-    return this.ctx.app.model.Role.findByAppId(appId);
+  getAll(param) {
+    const sequelizeJSON = this.getSequelizeJSON(param);
+    return this.ctx.app.model.Role.findAll(sequelizeJSON);
   }
 }
 

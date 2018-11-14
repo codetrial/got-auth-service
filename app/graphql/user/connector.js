@@ -1,10 +1,11 @@
 'use strict';
 
 const DataLoader = require('dataloader');
+const BaseConnector = require('../base/connector');
 
-class UserConnector {
+class UserConnector extends BaseConnector {
   constructor(ctx) {
-    this.ctx = ctx;
+    super(ctx);
     this.loaders = {
       userIdLoader: new DataLoader(this.getByIds.bind(this)),
     };
@@ -18,8 +19,9 @@ class UserConnector {
     return this.loaders.userIdLoader.load(id);
   }
 
-  getAll() {
-    return this.ctx.app.model.User.findAll();
+  getAll(param) {
+    const sequelizeJSON = this.getSequelizeJSON(param);
+    return this.ctx.app.model.User.findAll(sequelizeJSON);
   }
 }
 

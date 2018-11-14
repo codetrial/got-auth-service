@@ -1,16 +1,19 @@
 type Query {
   app(id: ID!): App
-  apps: [App]!
+  apps(param: SearchParam): [App]!
 
   group(id: ID!): Group
-  groups(appId: Int): [Group]!
+  groups(param: SearchParam): [Group]!
 
   role(id: ID!): Role
-  roles(appId: Int, groupId: Int): [Role]!
+  roles(param: SearchParam): [Role]!
+
+  resourceType(id: ID!): ResourceType
+  resourceTypes(param: SearchParam): [ResourceType]!
 
   resource(id: ID!): Resource
-  resources(appId: Int, roleId: Int): [Resource]!
+  resources(param: SearchParam): [Resource]!
 
   user(id: ID!): User
-  users: [User]!
+  users(param: SearchParam): [User]!
 }

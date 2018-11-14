@@ -1,10 +1,11 @@
 'use strict';
 
 const DataLoader = require('dataloader');
+const BaseConnector = require('../base/connector');
 
-class ResourceConnector {
+class ResourceConnector extends BaseConnector {
   constructor(ctx) {
-    this.ctx = ctx;
+    super(ctx);
     this.loaders = {
       resourceIdLoader: new DataLoader(this.getByIds.bind(this)),
     };
@@ -18,12 +19,9 @@ class ResourceConnector {
     return this.loaders.resourceIdLoader.load(id);
   }
 
-  getAll() {
-    return this.ctx.app.model.Resource.findAll();
-  }
-
-  getByAppId(appId) {
-    return this.ctx.app.model.Resource.findByAppId(appId);
+  getAll(param) {
+    const sequelizeJSON = this.getSequelizeJSON(param);
+    return this.ctx.app.model.Resource.findAll(sequelizeJSON);
   }
 }
 

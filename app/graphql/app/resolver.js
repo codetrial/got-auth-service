@@ -5,14 +5,18 @@ module.exports = {
     app(root, { id }, ctx) {
       return ctx.connector.app.getById(id);
     },
-    apps(root, args, ctx) {
-      return ctx.connector.app.getAll();
+    apps(root, { param }, ctx) {
+      return ctx.connector.app.getAll(param);
     },
   },
   App: {
     roles(app, args, ctx) {
-      console.log('WTF', app.id);
       return ctx.connector.role.getByAppId(app.id);
+    },
+  },
+  Mutation: {
+    createApp(root, { data }, ctx) {
+      return ctx.model.App.createWithT(data);
     },
   },
 };

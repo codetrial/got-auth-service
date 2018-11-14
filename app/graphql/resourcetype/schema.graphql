@@ -1,6 +1,5 @@
-type Role implements Datable {
+type ResourceType implements Datable {
   id: ID!
-  app_id: Int!
   code: String!
   name: String!
   create_time: Date!
