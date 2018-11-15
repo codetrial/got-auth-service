@@ -10,13 +10,25 @@ module.exports = {
     },
   },
   App: {
-    roles(app, args, ctx) {
-      return ctx.connector.role.getByAppId(app.id);
+    groups(app, { param }, ctx) {
+      return ctx.connector.app.getRole(app.id, param);
+    },
+    roles(app, { param }, ctx) {
+      return ctx.connector.app.getGroup(app.id, param);
+    },
+    resources(app, { param }, ctx) {
+      return ctx.connector.app.getResource(app.id, param);
     },
   },
   Mutation: {
     createApp(root, { data }, ctx) {
-      return ctx.model.App.createWithT(data);
+      return ctx.connector.app.create(data);
+    },
+    updateApp(root, { id, data }, ctx) {
+      return ctx.connector.app.update(id, data);
+    },
+    destroyApp(root, { id }, ctx) {
+      return ctx.connector.app.destroy(id);
     },
   },
 };

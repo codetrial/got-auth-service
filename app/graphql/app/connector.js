@@ -1,27 +1,26 @@
 'use strict';
 
-const DataLoader = require('dataloader');
 const BaseConnector = require('../base/connector');
 
 class AppConnector extends BaseConnector {
   constructor(ctx) {
     super(ctx);
-    this.loaders = {
-      userIdLoader: new DataLoader(this.getByIds.bind(this)),
-    };
+    this.sequelizeModel = ctx.model.App;
   }
 
-  getByIds(ids) {
-    return this.ctx.app.model.App.findByIds(ids);
-  }
-
-  getById(id) {
-    return this.loaders.userIdLoader.load(id);
-  }
-
-  getAll(param) {
+  getGroup(id, param) {
     const sequelizeJSON = this.getSequelizeJSON(param);
-    return this.ctx.app.model.App.findAll(sequelizeJSON);
+    return this.sequelizeModel.findGroups(id, sequelizeJSON);
+  }
+
+  getRole(id, param) {
+    const sequelizeJSON = this.getSequelizeJSON(param);
+    return this.sequelizeModel.findRoles(id, sequelizeJSON);
+  }
+
+  getResource(id, param) {
+    const sequelizeJSON = this.getSequelizeJSON(param);
+    return this.sequelizeModel.findResources(id, sequelizeJSON);
   }
 }
 

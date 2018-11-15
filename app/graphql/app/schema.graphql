@@ -5,9 +5,9 @@ type App implements Datable {
   create_time: Date!
   update_time: Date
 
-  groups: [Group]!
-  roles: [Role]!
-  resources: [Resource]!
+  groups(param: SearchParam): [Group]!
+  roles(param: SearchParam): [Role]!
+  resources(param: SearchParam): [Resource]!
 }
 
 input AppEntity {

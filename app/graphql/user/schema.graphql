@@ -5,7 +5,12 @@ type User implements Datable {
   create_time: Date!
   update_time: Date
 
-  groups: [Group]!
-  roles: [Role]!
+  groups(param: SearchParam): [Group]!
+  roles(param: SearchParam): [Role]!
   resources: [Resource]!
+}
+
+input UserEntity {
+  email: String!
+  name: String!
 }

@@ -2,6 +2,18 @@
 
 const operators = require('sequelize').Op;
 
+function toIdArray(id) {
+  if (id == null) {
+    return [];
+  }
+
+  if (typeof id === 'string') {
+    id = id.length ? id.split(',') : [];
+  }
+
+  return Array.isArray(id) ? id : [ id ];
+}
+
 function toJSON(data) {
   if (typeof data === 'string') {
     try {
@@ -63,5 +75,6 @@ function parseSequelizeJSON(page, filter) {
 }
 
 module.exports = {
+  toIdArray,
   parseSequelizeJSON,
 };

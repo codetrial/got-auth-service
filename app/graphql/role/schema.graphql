@@ -6,5 +6,11 @@ type Role implements Datable {
   create_time: Date!
   update_time: Date
 
-  resources: [Resource]!
+  resources(param: SearchParam): [Resource]!
+}
+
+input RoleEntity {
+  app_id: Int!
+  code: String!
+  name: String!
 }

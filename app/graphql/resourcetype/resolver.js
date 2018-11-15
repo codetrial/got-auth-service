@@ -9,4 +9,15 @@ module.exports = {
       return ctx.connector.resourcetype.getAll(param);
     },
   },
+  Mutation: {
+    createResourceType(root, { data }, ctx) {
+      return ctx.connector.resourcetype.create(data);
+    },
+    updateResourceType(root, { id, data }, ctx) {
+      return ctx.connector.resourcetype.update(id, data);
+    },
+    destroyResourceType(root, { id }, ctx) {
+      return ctx.connector.resourcetype.destroy(id);
+    },
+  },
 };

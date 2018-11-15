@@ -86,7 +86,6 @@ module.exports = app => {
   };
 
   Role.findByIds = async function(ids) {
-    console.log(this);
     const roles = this.findAll({
       where: {
         id: {
@@ -98,30 +97,15 @@ module.exports = app => {
     return roles;
   };
 
-  Role.findByAppId = async function(appId) {
-    return this.findAll({
-      where: {
-        app_id: appId,
-      },
-    });
-  };
-
   Role.findResources = async function(id, query = {}) {
     return await Role.findByPk(id).then(row => row.getResources(query));
   };
 
   Role.addResources = async function(id, resourceIds = []) {
-    if (typeof resourceIds === 'string') {
-      resourceIds = resourceIds.length ? resourceIds.split(',') : [];
-    }
     return await Role.findByPk(id).then(row => row.addResources(resourceIds));
   };
 
   Role.removeResources = async function(id, resourceIds = []) {
-    if (typeof resourceIds === 'string') {
-      resourceIds = resourceIds.length ? resourceIds.split(',') : [];
-    }
-
     if (!resourceIds.length) {
       return await Role.findByPk(id).then(row => row.setResources(resourceIds));
     }

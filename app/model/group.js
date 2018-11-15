@@ -91,30 +91,15 @@ module.exports = app => {
     return groups;
   };
 
-  Group.findByAppId = async function(appId) {
-    return this.findAll({
-      where: {
-        app_id: appId,
-      },
-    });
-  };
-
   Group.findRoles = async function(id, query = {}) {
     return await Group.findByPk(id).then(row => row.getRoles(query));
   };
 
   Group.addRoles = async function(id, roleIds = []) {
-    if (typeof roleIds === 'string') {
-      roleIds = roleIds.length ? roleIds.split(',') : [];
-    }
     return await Group.findByPk(id).then(row => row.addRoles(roleIds));
   };
 
   Group.removeRoles = async function(id, roleIds = []) {
-    if (typeof roleIds === 'string') {
-      roleIds = roleIds.length ? roleIds.split(',') : [];
-    }
-
     if (!roleIds.length) {
       return await Group.findByPk(id).then(row => row.setRoles(roleIds));
     }

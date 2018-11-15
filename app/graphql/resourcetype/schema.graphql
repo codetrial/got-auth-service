@@ -5,5 +5,10 @@ type ResourceType implements Datable {
   create_time: Date!
   update_time: Date
 
-  resources: [Resource]!
+  resources(param: SearchParam): [Resource]!
+}
+
+input ResourceTypeEntity {
+  code: String!
+  name: String!
 }

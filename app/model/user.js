@@ -102,17 +102,10 @@ module.exports = app => {
   };
 
   User.addGroups = async function(id, groupIds = []) {
-    if (typeof groupIds === 'string') {
-      groupIds = groupIds.length ? groupIds.split(',') : [];
-    }
     return await User.findByPk(id).then(row => row.addGroups(groupIds));
   };
 
   User.removeGroups = async function(id, groupIds = []) {
-    if (typeof groupIds === 'string') {
-      groupIds = groupIds.length ? groupIds.split(',') : [];
-    }
-
     if (!groupIds.length) {
       return await User.findByPk(id).then(row => row.setGroups(groupIds));
     }
@@ -150,17 +143,10 @@ module.exports = app => {
   };
 
   User.addRoles = async function(id, roleIds = []) {
-    if (typeof roleIds === 'string') {
-      roleIds = roleIds.length ? roleIds.split(',') : [];
-    }
     return await User.findByPk(id).then(row => row.addRoles(roleIds));
   };
 
   User.removeRoles = async function(id, roleIds = []) {
-    if (typeof roleIds === 'string') {
-      roleIds = roleIds.length ? roleIds.split(',') : [];
-    }
-
     if (!roleIds.length) {
       return await User.findByPk(id).then(row => row.setRoles(roleIds));
     }

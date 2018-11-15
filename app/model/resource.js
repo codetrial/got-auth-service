@@ -85,14 +85,6 @@ module.exports = app => {
     return resources;
   };
 
-  Resource.findByAppId = async function(appId) {
-    return this.findAll({
-      where: {
-        app_id: appId,
-      },
-    });
-  };
-
   Resource.findByRoleId = async function(roleId) {
     const role = await app.model.Role.findByPkId(roleId);
 

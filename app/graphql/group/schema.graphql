@@ -6,5 +6,11 @@ type Group implements Datable {
   create_time: Date!
   update_time: Date
   
-  roles: [Role]!
+  roles(param: SearchParam): [Role]!
+}
+
+input GroupEntity {
+  app_id: Int!
+  code: String!
+  name: String!
 }

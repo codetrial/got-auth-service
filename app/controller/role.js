@@ -107,7 +107,8 @@ class RoleController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.Role.addResources(ctx.params.id, ctx.request.body.ids);
+      const ids = ctx.helper.toIdArray(ctx.request.body.ids);
+      const data = await ctx.model.Role.addResources(ctx.params.id, ids);
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
@@ -123,7 +124,8 @@ class RoleController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.Role.removeResources(ctx.params.id, ctx.request.body.ids);
+      const ids = ctx.helper.toIdArray(ctx.request.body.ids);
+      const data = await ctx.model.Role.removeResources(ctx.params.id, ids);
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {

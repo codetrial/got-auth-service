@@ -1,27 +1,42 @@
 'use strict';
 
-const DataLoader = require('dataloader');
 const BaseConnector = require('../base/connector');
 
 class UserConnector extends BaseConnector {
   constructor(ctx) {
     super(ctx);
-    this.loaders = {
-      userIdLoader: new DataLoader(this.getByIds.bind(this)),
-    };
+    this.sequelizeModel = ctx.model.User;
   }
 
-  getByIds(ids) {
-    return this.ctx.app.model.User.findByIds(ids);
-  }
-
-  getById(id) {
-    return this.loaders.userIdLoader.load(id);
-  }
-
-  getAll(param) {
+  getGroup(id, param) {
     const sequelizeJSON = this.getSequelizeJSON(param);
-    return this.ctx.app.model.User.findAll(sequelizeJSON);
+    return this.sequelizeModel.findGroups(id, sequelizeJSON);
+  }
+
+  addGroup(id, groups) {
+    return this.sequelizeModel.addGroups(id, this.ctx.helper.toIdArray(groups));
+  }
+
+  removeGroup(id, groups) {
+    return this.sequelizeModel.removeGroups(id, this.ctx.helper.toIdArray(groups));
+  }
+
+  getRole(id, param) {
+    const sequelizeJSON = this.getSequelizeJSON(param);
+    return this.sequelizeModel.findRoles(id, sequelizeJSON);
+  }
+
+  addRole(id, roles) {
+    return this.sequelizeModel.addRoles(id, this.ctx.helper.toIdArray(roles));
+  }
+
+  removeRole(id, roles) {
+    return this.sequelizeModel.removeRoles(id, this.ctx.helper.toIdArray(roles));
+  }
+
+  getResource(id, param) {
+    const sequelizeJSON = this.getSequelizeJSON(param);
+    return this.sequelizeModel.findResources(id, sequelizeJSON);
   }
 }
 

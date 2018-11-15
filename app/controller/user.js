@@ -107,7 +107,8 @@ class UserController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.User.addGroups(ctx.params.id, ctx.request.body.ids);
+      const ids = ctx.helper.toIdArray(ctx.request.body.ids);
+      const data = await ctx.model.User.addGroups(ctx.params.id, ids);
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
@@ -123,7 +124,8 @@ class UserController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.User.removeGroups(ctx.params.id, ctx.request.body.ids);
+      const ids = ctx.helper.toIdArray(ctx.request.body.ids);
+      const data = await ctx.model.User.removeGroups(ctx.params.id, ids);
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
@@ -155,7 +157,8 @@ class UserController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.User.addRoles(ctx.params.id, ctx.request.body.ids);
+      const ids = ctx.helper.toIdArray(ctx.request.body.ids);
+      const data = await ctx.model.User.addRoles(ctx.params.id, ids);
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
@@ -171,7 +174,8 @@ class UserController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.User.removeRoles(ctx.params.id, ctx.request.body.ids);
+      const ids = ctx.helper.toIdArray(ctx.request.body.ids);
+      const data = await ctx.model.User.removeRoles(ctx.params.id, ids);
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {

@@ -29,10 +29,13 @@ module.exports = app => {
     const rows = await App.findAll(opts);
     const tasks = rows.reduce((prev, curr) => {
       return prev.concat([
+        curr.setGroups([], {
+          transaction: opts.transaction,
+        }),
         curr.setRoles([], {
           transaction: opts.transaction,
         }),
-        curr.setUsers([], {
+        curr.setResources([], {
           transaction: opts.transaction,
         }),
       ]);

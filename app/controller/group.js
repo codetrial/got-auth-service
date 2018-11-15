@@ -107,7 +107,8 @@ class GroupController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.Group.addRoles(ctx.params.id, ctx.request.body.ids);
+      const ids = ctx.helper.toIdArray(ctx.request.body.ids);
+      const data = await ctx.model.Group.addRoles(ctx.params.id, ids);
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
@@ -123,7 +124,8 @@ class GroupController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.Group.removeRoles(ctx.params.id, ctx.request.body.ids);
+      const ids = ctx.helper.toIdArray(ctx.request.body.ids);
+      const data = await ctx.model.Group.removeRoles(ctx.params.id, ids);
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
