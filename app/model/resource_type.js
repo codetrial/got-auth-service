@@ -5,19 +5,23 @@ const Op = require('sequelize').Op;
 module.exports = app => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
-  const ResourceType = app.model.define('resource_type', {
-    id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-    code: STRING(255),
-    name: STRING(255),
-    create_time: DATE,
-    update_time: DATE,
-  }, {
-    timestamps: true,
-    createdAt: 'create_time',
-    updatedAt: 'update_time',
-    underscored: true,
-    freezeTableName: true,
-  });
+  const ResourceType = app.model.define(
+    'resource_type',
+    {
+      id: { type: INTEGER, primaryKey: true, autoIncrement: true },
+      code: STRING(255),
+      name: STRING(255),
+      create_time: DATE,
+      update_time: DATE,
+    },
+    {
+      timestamps: true,
+      createdAt: 'create_time',
+      updatedAt: 'update_time',
+      underscored: true,
+      freezeTableName: true,
+    }
+  );
 
   ResourceType.associate = function() {
     ResourceType.hasMany(app.model.Resource, {
@@ -37,6 +41,15 @@ module.exports = app => {
     }, []);
     return Promise.all(tasks);
   });
+
+  ResourceType.findByPage = async function(opts = {}) {
+    return ResourceType.findAndCountAll(opts).then(result => {
+      return {
+        list: result.rows,
+        pagination: app.model.parsePagination(opts, result.count),
+      };
+    });
+  };
 
   ResourceType.createWithT = async function(data = {}) {
     return app.model.transaction(t => {

@@ -5,19 +5,23 @@ const Op = require('sequelize').Op;
 module.exports = app => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
-  const App = app.model.define('app', {
-    id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-    code: { type: STRING(255), unique: 'code' },
-    name: STRING(255),
-    create_time: DATE,
-    update_time: DATE,
-  }, {
-    timestamps: true,
-    createdAt: 'create_time',
-    updatedAt: 'update_time',
-    underscored: true,
-    freezeTableName: true,
-  });
+  const App = app.model.define(
+    'app',
+    {
+      id: { type: INTEGER, primaryKey: true, autoIncrement: true },
+      code: { type: STRING(255), unique: 'code' },
+      name: STRING(255),
+      create_time: DATE,
+      update_time: DATE,
+    },
+    {
+      timestamps: true,
+      createdAt: 'create_time',
+      updatedAt: 'update_time',
+      underscored: true,
+      freezeTableName: true,
+    }
+  );
 
   App.associate = function() {
     App.hasMany(app.model.Group);
@@ -43,6 +47,15 @@ module.exports = app => {
 
     return Promise.all(tasks);
   });
+
+  App.findByPage = async function(opts = {}) {
+    return App.findAndCountAll(opts).then(result => {
+      return {
+        list: result.rows,
+        pagination: app.model.parsePagination(opts, result.count),
+      };
+    });
+  };
 
   App.createWithT = async function(data = {}) {
     return app.model.transaction(t => {

@@ -5,20 +5,24 @@ const Op = require('sequelize').Op;
 module.exports = app => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
-  const Role = app.model.define('role', {
-    id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-    app_id: { type: INTEGER, unique: 'app_id_code' },
-    code: { type: STRING(255), unique: 'app_id_code' },
-    name: STRING(255),
-    create_time: DATE,
-    update_time: DATE,
-  }, {
-    timestamps: true,
-    createdAt: 'create_time',
-    updatedAt: 'update_time',
-    underscored: true,
-    freezeTableName: true,
-  });
+  const Role = app.model.define(
+    'role',
+    {
+      id: { type: INTEGER, primaryKey: true, autoIncrement: true },
+      app_id: { type: INTEGER, unique: 'app_id_code' },
+      code: { type: STRING(255), unique: 'app_id_code' },
+      name: STRING(255),
+      create_time: DATE,
+      update_time: DATE,
+    },
+    {
+      timestamps: true,
+      createdAt: 'create_time',
+      updatedAt: 'update_time',
+      underscored: true,
+      freezeTableName: true,
+    }
+  );
 
   Role.associate = function() {
     Role.belongsToMany(app.model.Resource, {
@@ -50,6 +54,15 @@ module.exports = app => {
     }, []);
     return Promise.all(tasks);
   });
+
+  Role.findByPage = async function(opts = {}) {
+    return Role.findAndCountAll(opts).then(result => {
+      return {
+        list: result.rows,
+        pagination: app.model.parsePagination(opts, result.count),
+      };
+    });
+  };
 
   Role.createWithT = async function(data = {}) {
     return app.model.transaction(t => {
@@ -109,7 +122,9 @@ module.exports = app => {
     if (!resourceIds.length) {
       return await Role.findByPk(id).then(row => row.setResources(resourceIds));
     }
-    return await Role.findByPk(id).then(row => row.removeResources(resourceIds));
+    return await Role.findByPk(id).then(row =>
+      row.removeResources(resourceIds)
+    );
   };
 
   return Role;

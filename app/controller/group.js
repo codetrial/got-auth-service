@@ -7,7 +7,7 @@ class GroupController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.Group.findAll(ctx.sequelizeJSON);
+      const data = await ctx.model.Group.findByPage(ctx.sequelizeJSON);
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
@@ -55,7 +55,10 @@ class GroupController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.Group.updateWithT([ ctx.params.id ], ctx.request.body);
+      const data = await ctx.model.Group.updateWithT(
+        [ ctx.params.id ],
+        ctx.request.body
+      );
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
@@ -91,7 +94,10 @@ class GroupController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.Group.findRoles(ctx.params.id, ctx.sequelizeJSON);
+      const data = await ctx.model.Group.findRoles(
+        ctx.params.id,
+        ctx.sequelizeJSON
+      );
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {

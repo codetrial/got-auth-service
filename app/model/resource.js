@@ -5,21 +5,25 @@ const Op = require('sequelize').Op;
 module.exports = app => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
-  const Resource = app.model.define('resource', {
-    id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-    app_id: { type: INTEGER, unique: 'app_id_code' },
-    code: { type: STRING(255), unique: 'app_id_code' },
-    resource_type_id: INTEGER,
-    detail: STRING(255),
-    create_time: DATE,
-    update_time: DATE,
-  }, {
-    timestamps: true,
-    createdAt: 'create_time',
-    updatedAt: 'update_time',
-    underscored: true,
-    freezeTableName: true,
-  });
+  const Resource = app.model.define(
+    'resource',
+    {
+      id: { type: INTEGER, primaryKey: true, autoIncrement: true },
+      app_id: { type: INTEGER, unique: 'app_id_code' },
+      code: { type: STRING(255), unique: 'app_id_code' },
+      resource_type_id: INTEGER,
+      detail: STRING(255),
+      create_time: DATE,
+      update_time: DATE,
+    },
+    {
+      timestamps: true,
+      createdAt: 'create_time',
+      updatedAt: 'update_time',
+      underscored: true,
+      freezeTableName: true,
+    }
+  );
 
   Resource.associate = function() {
     Resource.belongsToMany(app.model.Role, {
@@ -38,6 +42,15 @@ module.exports = app => {
     }, []);
     return Promise.all(tasks);
   });
+
+  Resource.findByPage = async function(opts = {}) {
+    return Resource.findAndCountAll(opts).then(result => {
+      return {
+        list: result.rows,
+        pagination: app.model.parsePagination(opts, result.count),
+      };
+    });
+  };
 
   Resource.createWithT = async function(data = {}) {
     return app.model.transaction(t => {

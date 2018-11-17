@@ -6,19 +6,23 @@ const Op = require('sequelize').Op;
 module.exports = app => {
   const { STRING, INTEGER, DATE } = app.Sequelize;
 
-  const User = app.model.define('user', {
-    id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-    email: { type: STRING(255), unique: 'email' },
-    name: STRING(255),
-    create_time: DATE,
-    update_time: DATE,
-  }, {
-    timestamps: true,
-    createdAt: 'create_time',
-    updatedAt: 'update_time',
-    underscored: true,
-    freezeTableName: true,
-  });
+  const User = app.model.define(
+    'user',
+    {
+      id: { type: INTEGER, primaryKey: true, autoIncrement: true },
+      email: { type: STRING(255), unique: 'email' },
+      name: STRING(255),
+      create_time: DATE,
+      update_time: DATE,
+    },
+    {
+      timestamps: true,
+      createdAt: 'create_time',
+      updatedAt: 'update_time',
+      underscored: true,
+      freezeTableName: true,
+    }
+  );
 
   User.associate = function() {
     User.belongsToMany(app.model.Group, {
@@ -43,13 +47,24 @@ module.exports = app => {
           where: {
             user_id: curr.id,
           },
-        }).then(row => row.destroy({
-          transaction: opts.transaction,
-        })),
+        }).then(row =>
+          row.destroy({
+            transaction: opts.transaction,
+          })
+        ),
       ]);
     }, []);
     return Promise.all(tasks);
   });
+
+  User.findByPage = async function(opts = {}) {
+    return User.findAndCountAll(opts).then(result => {
+      return {
+        list: result.rows,
+        pagination: app.model.parsePagination(opts, result.count),
+      };
+    });
+  };
 
   User.createWithT = async function(data = {}) {
     return app.model.transaction(t => {

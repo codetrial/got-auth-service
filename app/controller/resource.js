@@ -7,7 +7,7 @@ class ResourceController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.Resource.findAll(ctx.sequelizeJSON);
+      const data = await ctx.model.Resource.findByPage(ctx.sequelizeJSON);
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
@@ -55,7 +55,10 @@ class ResourceController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.Resource.updateWithT([ ctx.params.id ], ctx.request.body);
+      const data = await ctx.model.Resource.updateWithT(
+        [ ctx.params.id ],
+        ctx.request.body
+      );
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {

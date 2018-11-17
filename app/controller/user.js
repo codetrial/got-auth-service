@@ -7,7 +7,7 @@ class UserController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.User.findAll(ctx.sequelizeJSON);
+      const data = await ctx.model.User.findByPage(ctx.sequelizeJSON);
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
@@ -55,7 +55,10 @@ class UserController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.User.updateWithT([ ctx.params.id ], ctx.request.body);
+      const data = await ctx.model.User.updateWithT(
+        [ ctx.params.id ],
+        ctx.request.body
+      );
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
@@ -91,7 +94,10 @@ class UserController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.User.findGroups(ctx.params.id, ctx.sequelizeJSON);
+      const data = await ctx.model.User.findGroups(
+        ctx.params.id,
+        ctx.sequelizeJSON
+      );
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
@@ -141,7 +147,10 @@ class UserController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.User.findRoles(ctx.params.id, ctx.sequelizeJSON);
+      const data = await ctx.model.User.findRoles(
+        ctx.params.id,
+        ctx.sequelizeJSON
+      );
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
@@ -191,7 +200,10 @@ class UserController extends BaseController {
     const { ctx } = this;
 
     try {
-      const data = await ctx.model.User.findResources(ctx.params.id, ctx.sequelizeJSON);
+      const data = await ctx.model.User.findResources(
+        ctx.params.id,
+        ctx.sequelizeJSON
+      );
 
       this.ctx.body = this.getSuccessJSON({ data });
     } catch (err) {
