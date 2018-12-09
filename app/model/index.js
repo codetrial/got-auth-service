@@ -13,8 +13,8 @@ module.exports = app => {
     };
 
     order.forEach(([ orderBy, order ]) => {
-      order.push(order);
-      orderBy.push(orderBy);
+      pagination.order.push(order);
+      pagination.orderBy.push(orderBy);
     });
 
     return pagination;
