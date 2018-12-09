@@ -54,8 +54,12 @@ function parseFilter(filter = {}) {
       let [ opKey, fieldKey ] = REG.exec(key).slice(1);
       opKey = opKey.toLowerCase();
       if (operators[opKey] != null) {
+        let filterValue = filter[key];
+        if (/like/gi.test(opKey)) {
+          filterValue = '%' + filterValue;
+        }
         filterJSON[fieldKey] = {
-          [operators[opKey]]: filter[key],
+          [operators[opKey]]: filterValue,
         };
       }
     } else {
