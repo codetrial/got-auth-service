@@ -13,8 +13,8 @@ module.exports = appInfo => {
     dialect: 'mysql',
     /* mysql config here */
     database: 'gotauth',
-    host: 'localhost',
-    port: '3306',
+    host: process.env.GOT_DB_HOST || 'localhost',
+    port: process.env.GOT_DB_PORT || '3306',
     username: process.env.GOT_DB_USR,
     password: process.env.GOT_DB_PWD,
   };

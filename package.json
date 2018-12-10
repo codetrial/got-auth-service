@@ -27,6 +27,7 @@
   },
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-got-auth-service",
+    "start:docker": "egg-scripts start",
     "stop": "egg-scripts stop --title=egg-server-got-auth-service",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
