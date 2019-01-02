@@ -1,26 +1,35 @@
-# got-auth-service
+# GOT Auth Service
 
+[![License](https://img.shields.io/github/license/codetrial/got-auth-service.svg)](https://github.com/codetrial/got-auth-service)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/codetrial/got-auth-service)
 
+A complete resource-based authentication service for backend systems.
+
+English | [简体中文](./README.zh-CN.md)
+
+## Docs
+
+[:zap: Live Demo](https://gotauth-api.felixpy.com/) | [:book: Docs](https://codetrial.github.io/gotauth)
+
+## Screen Capture
+
+![Screen Capture](.github/preview.gif)
 
 ## QuickStart
-
-<!-- add docs here for user -->
-
-see [egg docs][egg] for more detail.
 
 ### Development
 
 ```bash
-$ npm i
-$ npm run dev
-$ open http://localhost:7001/
+npm i
+npm run dev
+open http://localhost:7001/
 ```
 
 ### Deploy
 
 ```bash
-$ npm start
-$ npm stop
+npm start
+npm stop
 ```
 
 ### npm scripts
@@ -29,5 +38,18 @@ $ npm stop
 - Use `npm test` to run unit test.
 - Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
 
+## Contributing
 
-[egg]: https://eggjs.org
+Looking forward to your pull requests.
+
+## Built With
+
+- [Apollo GraphQL](https://github.com/apollographql/apollo-server)
+- [Sequelize](https://github.com/sequelize/sequelize)
+- [Egg.js](https://github.com/eggjs/egg)
+
+## License
+
+[MIT](http://opensource.org/licenses/MIT)
+
+Copyright (c) 2018 - present, Felix Yang

@@ -1,39 +1,55 @@
-# got-auth-service
+# GOT Auth Service
 
+[![License](https://img.shields.io/github/license/codetrial/got-auth-service.svg)](https://github.com/codetrial/got-auth-service)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/codetrial/got-auth-service)
 
+一个为专后台系统打造的基于资源的完整鉴权服务。
 
-## 快速入门
+简体中文 | [English](./README.md)
 
-<!-- 在此次添加使用文档 -->
+## 文档
 
-如需进一步了解，参见 [egg 文档][egg]。
+[:zap: 在线预览](https://gotauth-api.felixpy.com) | [:book: 参考文档](https://codetrial.github.io/gotauth)
 
-### 本地开发
+## 截图
+
+![Screen Capture](.github/preview.gif)
+
+## 快速开始
+
+### 开发
 
 ```bash
-$ npm i
-$ npm run dev
-$ open http://localhost:7001/
+npm i
+npm run dev
+open http://localhost:7001/
 ```
 
 ### 部署
 
 ```bash
-$ npm start
-$ npm stop
+npm start
+npm stop
 ```
 
-### 单元测试
+### NPM 脚本
 
-- [egg-bin] 内置了 [mocha], [thunk-mocha], [power-assert], [istanbul] 等框架，让你可以专注于写单元测试，无需理会配套工具。
-- 断言库非常推荐使用 [power-assert]。
-- 具体参见 [egg 文档 - 单元测试](https://eggjs.org/zh-cn/core/unittest)。
+- Use `npm run lint` to check code style.
+- Use `npm test` to run unit test.
+- Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
 
-### 内置指令
+## 贡献
 
-- 使用 `npm run lint` 来做代码风格检查。
-- 使用 `npm test` 来执行单元测试。
-- 使用 `npm run autod` 来自动检测依赖更新，详细参见 [autod](https://www.npmjs.com/package/autod) 。
+期待你的 `pull requests`。如果你觉得有帮助，还请多多反馈！
 
+## 技术栈
 
-[egg]: https://eggjs.org
+- [Apollo GraphQL](https://github.com/apollographql/apollo-server)
+- [Sequelize](https://github.com/sequelize/sequelize)
+- [Egg.js](https://github.com/eggjs/egg)
+
+## 许可
+
+[MIT](http://opensource.org/licenses/MIT)
+
+Copyright (c) 2018 - present, Felix Yang
