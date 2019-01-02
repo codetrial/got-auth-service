@@ -9,6 +9,7 @@
     "egg-graphql": "^2.3.0",
     "egg-scripts": "^2.5.0",
     "egg-sequelize": "^4.1.0",
+    "egg-token": "^2.0.1",
     "lodash": "^4.17.11",
     "mysql2": "^1.6.1"
   },

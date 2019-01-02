@@ -26,7 +26,18 @@ module.exports = appInfo => {
     graphiql: true,
   };
 
-  exports.security = {
+  config.token = {
+    type: 'md5',
+
+    apps: {
+      codetrial: {
+        secret: 'moi8nvXuYTw28onZc90DLkmGeRWQ',
+        expires: 30000,
+      },
+    },
+  };
+
+  config.security = {
     csrf: {
       // @todo: provisionally ignore csrf
       ignore: () => true,
