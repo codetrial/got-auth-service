@@ -32,11 +32,11 @@ npm start
 npm stop
 ```
 
-### NPM 脚本
+### 脚本
 
-- Use `npm run lint` to check code style.
-- Use `npm test` to run unit test.
-- Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
+- 使用 `npm run lint` 来检测代码格式。
+- 使用 `npm test` 来运行单元测试。
+- 使用 `npm run autod` 来自动检测依赖包版本更新，参见 [autod](https://www.npmjs.com/package/autod) 来查看详情。
 
 ## 核心功能
 
