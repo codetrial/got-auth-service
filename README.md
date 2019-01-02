@@ -38,6 +38,17 @@ npm stop
 - Use `npm test` to run unit test.
 - Use `npm run autod` to auto detect dependencies upgrade, see [autod](https://www.npmjs.com/package/autod) for more detail.
 
+## Core Features
+
+- :camera: Application
+- :tv: Resource
+- :telephone_receiver: Role
+- :pager: Group
+- :watch: User
+- :radio: Restful
+- :mag_right: GraphQL
+- :ghost: Authorization
+
 ## Contributing
 
 Looking forward to your pull requests.
