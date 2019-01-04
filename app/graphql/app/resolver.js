@@ -11,10 +11,10 @@ module.exports = {
   },
   App: {
     groups(app, { param }, ctx) {
-      return ctx.connector.app.getRole(app.id, param);
+      return ctx.connector.app.getGroup(app.id, param);
     },
     roles(app, { param }, ctx) {
-      return ctx.connector.app.getGroup(app.id, param);
+      return ctx.connector.app.getRole(app.id, param);
     },
     resources(app, { param }, ctx) {
       return ctx.connector.app.getResource(app.id, param);
