@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/github/license/codetrial/got-auth-service.svg)](https://github.com/codetrial/got-auth-service)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/codetrial/got-auth-service)
 
-A complete resource-based authentication service for backend systems.
+A complete resource-based authentication service for enterprise applications.
 
 English | [简体中文](./README.zh-CN.md)
 
@@ -40,11 +40,11 @@ npm stop
 
 ## Core Features
 
-- :camera: Application
-- :tv: Resource
-- :telephone_receiver: Role
-- :pager: Group
-- :watch: User
+- :camera: Auth Application
+- :tv: Auth Resource
+- :telephone_receiver: Auth Role
+- :pager: Auth Group
+- :watch: Auth User
 - :radio: Restful
 - :mag_right: GraphQL
 - :ghost: Authorization
