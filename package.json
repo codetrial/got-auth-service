@@ -1,7 +1,7 @@
 {
   "name": "got-auth-service",
   "version": "1.0.0",
-  "description": "",
+  "description": "A professional role-based-authorization service(also supports resource and group) for enterprise applications.",
   "private": true,
   "dependencies": {
     "dataloader": "^1.4.0",

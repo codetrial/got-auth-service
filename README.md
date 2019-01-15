@@ -3,9 +3,13 @@
 [![License](https://img.shields.io/github/license/codetrial/got-auth-service.svg)](https://github.com/codetrial/got-auth-service)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/codetrial/got-auth-service)
 
-A complete resource-based authentication service for enterprise applications.
+A professional role-based-authorization service(also supports resource and group) for enterprise applications.
 
 English | [简体中文](./README.zh-CN.md)
+
+## Admin
+
+[GOT Auth Admin](https://github.com/codetrial/got-auth-admin)
 
 ## Docs
 

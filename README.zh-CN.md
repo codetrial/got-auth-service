@@ -3,9 +3,13 @@
 [![License](https://img.shields.io/github/license/codetrial/got-auth-service.svg)](https://github.com/codetrial/got-auth-service)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/codetrial/got-auth-service)
 
-一个专为企业级后台管理系统打造的基于资源的完整鉴权服务。
+一个专为企业级后台管理系统打造的基于角色的专业鉴权服务（也支持资源和分组）。
 
 简体中文 | [English](./README.md)
+
+## 管理系统
+
+[GOT Auth Admin](https://github.com/codetrial/got-auth-admin)
 
 ## 文档
 
