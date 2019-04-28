@@ -21,6 +21,10 @@ English | [简体中文](./README.zh-CN.md)
 
 ## QuickStart
 
+### Database
+
+Use file [gotauth.sql](./data/gotauth.sql) to initialize your database, then update the configuration of the sql server.
+
 ### Development
 
 ```bash
