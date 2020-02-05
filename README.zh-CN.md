@@ -7,10 +7,6 @@
 
 简体中文 | [English](./README.md)
 
-## 管理系统
-
-[GOT Auth Admin](https://github.com/codetrial/got-auth-admin)
-
 ## 文档
 
 [:zap: 在线预览](https://gotauth-api.felixpy.com) | [:book: 参考文档](https://codetrial.github.io/gotauth)

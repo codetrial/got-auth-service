@@ -7,10 +7,6 @@ A professional role-based-authorization service(also supports resource and group
 
 English | [简体中文](./README.zh-CN.md)
 
-## Admin
-
-[GOT Auth Admin](https://github.com/codetrial/got-auth-admin)
-
 ## Docs
 
 [:zap: Live Demo](https://gotauth-api.felixpy.com/) | [:book: Docs](https://codetrial.github.io/gotauth)
